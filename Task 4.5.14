@@ -1,0 +1,11 @@
+depth_hyperparams = range(1, 16)
+training_acc = []
+validation_acc = []
+for d in depth_hyperparams:
+    model_dt = make_pipeline(
+        OrdinalEncoder(),
+        DecisionTreeClassifier(max_depth=4, random_state=42)
+    )
+    model_dt.fit(X_train, y_train)
+    training_acc.append(model_dt.score(X_train, y_train))
+    validation_acc.append(model_dt.score(X_val, y_val))
