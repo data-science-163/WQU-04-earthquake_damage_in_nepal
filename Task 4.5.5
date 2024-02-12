@@ -1,0 +1,32 @@
+# Build your `wrangle` function here
+def wrangle(path):
+    conn = sqlite3.connect(path)
+    query = """
+        SELECT distinct(i.building_id) AS b_id,
+               s.*,
+               d.damage_grade
+        FROM id_map AS i
+        JOIN building_structure AS s ON i.building_id = s.building_id
+        JOIN building_damage AS d ON i.building_id = d.building_id
+        WHERE district_id = 3
+    """
+    
+    df = pd.read_sql(query, conn, index_col = 'b_id')
+    
+    # Identify leaky columns
+    cols = [col for col in df.columns if 'post_eq' in col]
+    
+    # create severe damage column
+    df["damage_grade"] = df["damage_grade"].str[-1].astype(int)
+    df["severe_damage"] = (df["damage_grade"] > 3).astype(int)
+    cols.append('damage_grade')
+    
+    # drop mulilinearity column
+    cols.append('count_floors_pre_eq')
+    
+    # drop highest categorical features
+    cols.append('building_id')
+    
+    df.drop(columns=cols, inplace=True)
+    
+    return df
