@@ -1,0 +1,5 @@
+model_lr = make_pipeline(
+    OneHotEncoder(),
+    LogisticRegression(max_iter=3000)
+)
+model_lr.fit(X_train, y_train)
