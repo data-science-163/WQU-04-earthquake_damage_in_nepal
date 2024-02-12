@@ -1,0 +1,4 @@
+features = X_train.columns
+importances = final_model_dt.named_steps['decisiontreeclassifier'].feature_importances_
+feat_imp = pd.Series(importances, index=features).sort_values()
+feat_imp.head()
