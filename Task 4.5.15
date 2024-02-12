@@ -1,0 +1,8 @@
+plt.plot(depth_hyperparams, training_acc, label='Training')
+plt.plot(depth_hyperparams, validation_acc, label='Validation')
+plt.xlabel("Max Depth")
+plt.ylabel("Accuracy Score")
+plt.title("Validation Curve, Decision Tree")
+plt.legend();
+# Don't delete the code below 👇
+plt.savefig("images/4-5-15.png", dpi=150)
