@@ -1,0 +1,5 @@
+final_model_dt = make_pipeline(
+    OrdinalEncoder(),
+    DecisionTreeClassifier(max_depth=10, random_state=42)
+)
+final_model_dt.fit(X_train, y_train)
