@@ -1,0 +1,2 @@
+acc_baseline = y_train.value_counts(normalize=True).max()
+print("Baseline Accuracy:", round(acc_baseline, 2))
