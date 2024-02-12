@@ -1,0 +1,3 @@
+X_test = pd.read_csv("data/kavrepalanchok-test-features.csv", index_col="b_id")
+y_test_pred = pd.Series(final_model_dt.predict(X_test))
+y_test_pred[:5]
