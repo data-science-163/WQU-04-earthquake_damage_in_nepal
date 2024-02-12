@@ -1,0 +1,5 @@
+lr_train_acc = model_lr.score(X_train, y_train)
+lr_val_acc = model_lr.score(X_val, y_val)
+
+print("Logistic Regression, Training Accuracy Score:", lr_train_acc)
+print("Logistic Regression, Validation Accuracy Score:", lr_val_acc)
